@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aman Patel — Coffee &amp; Patisserie</title>
+<meta name="description" content="Aman Patel: single-origin coffee, hand-laminated patisserie and a cinematic café experience.">
+<meta name="theme-color" content="#0c0907">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{--k:#0c0907;--k2:#16100c;--c:#efe4cf;--g:#c9a15b;--e:#e2643a;--m:#9b8e7a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--k);color:var(--c);font:400 16px/1.65 Inter,system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body:not(.ready){overflow:hidden}
+h1,h2,h3,.f{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--g);color:var(--k)}
+:focus-visible{outline:2px solid var(--g);outline-offset:3px}
+#pre{position:fixed;inset:0;z-index:200;background:var(--k);display:grid;place-items:center;transition:transform 1.1s cubic-bezier(.76,0,.24,1)}
+#pre.go{transform:translateY(-100%)}
+.pw{text-align:center}.pw b{font:italic 500 clamp(34px,6vw,64px) 'Cormorant Garamond',serif;display:block}.pw span{font:500 12px Inter;letter-spacing:.4em;color:var(--g)}
+#bar{position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--g),var(--e));transform-origin:0 0;transform:scaleX(0);z-index:90}
+#dust{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#cur,#ring{position:fixed;left:0;top:0;pointer-events:none;z-index:150;border-radius:50%;display:none}
+#cur{width:6px;height:6px;background:var(--g);margin:-3px}
+#ring{width:38px;height:38px;margin:-19px;border:1px solid var(--g);transition:width .3s,height .3s,margin .3s,background .3s}
+#ring.h{width:76px;height:76px;margin:-38px;background:#c9a15b22}
+@media (pointer:fine){#cur,#ring{display:block}body,a,button{cursor:none}}
+nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(20px,4vw,56px);padding-top:calc(20px + env(safe-area-inset-top,0px));mix-blend-mode:difference;color:#fff}
+nav b{font:italic 600 24px 'Cormorant Garamond',serif}
+nav div{display:flex;gap:30px;align-items:center}nav a{font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.live{display:inline-flex;gap:8px;align-items:center;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid #fff6;padding:6px 12px;border-radius:99px}
+.live i{width:7px;height:7px;border-radius:50%;background:#3ddc97;animation:pl 1.6s infinite}.live.x i{background:#e2643a;animation:none}
+@keyframes pl{50%{box-shadow:0 0 0 6px #3ddc9733}}
+.ln{display:block;overflow:hidden;padding-bottom:.06em}.ln>span{display:block;transform:translateY(112%)}
+.ready .ln>span{animation:up 1.2s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--d,0)*.14s + .5s)}
+@keyframes up{to{transform:none}}
+.fade{opacity:0;transform:translateY(24px)}.ready .fade{animation:fd 1s ease forwards;animation-delay:1.3s}@keyframes fd{to{opacity:1;transform:none}}
+.eb{font:600 11px Inter;letter-spacing:.3em;text-transform:uppercase;color:var(--g);display:flex;gap:14px;align-items:center}.eb::before{content:"";width:40px;height:1px;background:var(--g)}
+.btn{display:inline-block;padding:16px 32px;border-radius:99px;font:600 13px Inter;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--g);transition:background .3s,color .3s}
+.b1{background:var(--g);color:var(--k)}.b1:hover{background:var(--c);border-color:var(--c)}.b2:hover{background:var(--g);color:var(--k)}
+#hero{height:200vh;position:relative}
+.hs{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 55%,#2a1b11 0,var(--k) 68%)}
+#hc{position:absolute;width:min(56vmin,520px);will-change:transform}
+.hh{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 5vw;mix-blend-mode:difference;color:#efe4cf;z-index:3;pointer-events:none}
+.hh h1{font-size:clamp(66px,15vw,250px);line-height:.84;font-weight:500}
+.hh .r{text-align:right}.hh em{font-style:italic;color:#fff}
+.hb{position:absolute;left:5vw;bottom:7vh;z-index:4;max-width:360px}
+.hb p{color:var(--m);margin-bottom:20px}
+.badge{position:absolute;left:5vw;top:15vh;z-index:4;display:inline-flex;gap:10px;align-items:center;border:1px solid #efe4cf30;border-radius:99px;padding:7px 16px 7px 8px;font-size:12px;background:#0c090799;backdrop-filter:blur(8px)}
+.badge b{background:var(--g);color:var(--k);border-radius:99px;padding:2px 9px;font-size:11px;letter-spacing:.2em}
+.sc{position:absolute;right:5vw;bottom:7vh;z-index:4;font:600 11px Inter;letter-spacing:.3em;text-transform:uppercase;color:var(--m);writing-mode:vertical-rl;display:flex;gap:12px;align-items:center}
+.sc::after{content:"";width:1px;height:60px;background:linear-gradient(var(--g),transparent);animation:ln 2s infinite}@keyframes ln{50%{transform:scaleY(.4)}}
+#art{transform-origin:200px 200px;animation:spin 60s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.mq{overflow:hidden;border-block:1px solid #efe4cf18;padding:20px 0;position:relative;z-index:2;background:var(--k)}
+.mq div{display:inline-block;white-space:nowrap;animation:mq 34s linear infinite;font:italic 500 clamp(26px,4vw,48px) 'Cormorant Garamond',serif}.mq span{color:var(--g);margin:0 28px}
+@keyframes mq{to{transform:translateX(-50%)}}
+section.p{position:relative;z-index:2;padding:16vh 5vw;background:var(--k)}
+#story h2{font-size:clamp(34px,5.6vw,86px);line-height:1.08;max-width:1100px}
+#story h2 w{opacity:.14;transition:opacity .25s}#story h2 w.on{opacity:1}#story h2 w.g.on{color:var(--g)}
+.st3{display:flex;gap:60px;margin-top:70px;flex-wrap:wrap}.st3 b{display:block;font:500 clamp(52px,7vw,96px)/1 'Cormorant Garamond',serif;color:var(--g)}.st3 span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--m)}
+#proc{height:420vh;position:relative;z-index:2;background:#120c08}
+.ps{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:0 5vw;gap:4vw}
+.stp{display:grid;gap:6px;margin-top:26px}
+.stp div{display:grid;grid-template-columns:70px 1fr;gap:6px 14px;padding:16px 0;border-top:1px solid #efe4cf1c;opacity:.28;transition:.6s}
+.stp div.on{opacity:1;border-color:var(--g)}.stp b{font:italic 500 38px 'Cormorant Garamond',serif;color:var(--g);grid-row:span 2}
+.stp h3{font-size:30px;line-height:1.1}.stp p{color:var(--m);font-size:14.5px;max-height:0;overflow:hidden;transition:max-height .7s}.stp .on p{max-height:90px}
+.pg{justify-self:center;width:min(380px,80%)}
+#menu{height:300vh;position:relative;z-index:2;background:var(--c);color:var(--k)}
+.ms{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
+.tr{display:flex;gap:28px;padding:0 5vw;will-change:transform;align-items:stretch}
+.ti{min-width:min(420px,82vw);display:flex;flex-direction:column;justify-content:center;padding-right:30px}
+.ti h2{font-size:clamp(50px,7vw,100px);line-height:.9;margin:16px 0}.ti p{color:#6b5b4a;max-width:340px}
+.cd{width:min(340px,76vw);background:var(--k);color:var(--c);border-radius:28px;padding:16px;display:flex;flex-direction:column;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.cd:hover{transform:translateY(-14px)}
+.art{aspect-ratio:1/.85;border-radius:18px;background:radial-gradient(circle at 30% 25%,var(--a),var(--b));display:grid;place-items:center;font-size:92px;position:relative;overflow:hidden}
+.art::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,#fff3 50%,transparent 65%);transform:translateX(-110%);transition:transform .9s}.cd:hover .art::after{transform:translateX(110%)}
+.cd .tg{display:flex;gap:6px;margin:16px 0 4px;flex-wrap:wrap}.tg i{font:600 10px Inter;letter-spacing:.14em;text-transform:uppercase;border:1px solid #efe4cf33;border-radius:99px;padding:3px 10px;color:var(--g);font-style:normal}
+.cd h3{font-size:30px;line-height:1.1;margin-top:6px}.cd p{color:var(--m);font-size:14px;flex:1;margin:6px 0 14px}.cd .pr{font:500 28px 'Cormorant Garamond',serif;color:var(--g);border-top:1px solid #efe4cf1c;padding-top:12px}
+.mp{position:absolute;left:5vw;right:5vw;bottom:5vh;height:2px;background:#0c090722}.mp i{display:block;height:100%;background:var(--e);transform-origin:0 0;transform:scaleX(0)}
+#match{background:var(--k2)}
+.qa{margin-top:36px;max-width:880px}
+.qa h3{font-size:clamp(28px,3.6vw,46px);margin-bottom:22px}
+.opts{display:flex;flex-wrap:wrap;gap:12px}.opts button{background:none;color:var(--c);font:500 14px Inter;border:1px solid #efe4cf33;border-radius:99px;padding:14px 26px;transition:.3s}.opts button:hover{background:var(--g);color:var(--k);border-color:var(--g)}
+.res{margin-top:10px;padding:34px;border:1px solid var(--g);border-radius:26px;background:linear-gradient(135deg,#c9a15b1a,transparent);animation:fd 1s forwards;opacity:0}
+.res h3{font-size:clamp(40px,6vw,76px);color:var(--g);line-height:1}.res p{color:var(--m);margin:10px 0 18px;max-width:440px}
+#rev{background:var(--k);padding:16vh 0;overflow:hidden}
+#rev .eb,#rev h2{margin-left:5vw}#rev h2{font-size:clamp(40px,6vw,88px);line-height:1;margin-top:16px;margin-bottom:50px}
+.rw{display:flex;gap:18px;width:max-content;margin-bottom:18px;animation:mq 60s linear infinite}.rw.b{animation-direction:reverse;animation-duration:70s}
+.rc{width:min(380px,80vw);padding:26px;border:1px solid #efe4cf1c;border-radius:22px;background:var(--k2);white-space:normal}
+.rc .s{color:var(--g);letter-spacing:4px;font-size:13px}.rc p{font:italic 500 21px/1.3 'Cormorant Garamond',serif;margin:10px 0}.rc small{color:var(--m);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.vg{display:grid;grid-template-columns:1fr 1.1fr;gap:5vw;align-items:center}
+.vg h2{font-size:clamp(44px,6.4vw,100px);line-height:.92;margin:16px 0 24px}
+.hr{margin:26px 0}.hr div{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #efe4cf1c;color:var(--m);transition:.3s}.hr div.t{color:var(--c);border-color:var(--g);padding-left:10px}
+.map{border-radius:28px;overflow:hidden;border:1px solid #efe4cf22;box-shadow:0 40px 80px -40px #000}.map svg{display:block;width:100%;height:auto}
+footer{position:relative;z-index:2;background:#080605;padding:10vh 5vw 30px;overflow:hidden}
+.fb{font:italic 500 clamp(70px,17vw,300px)/.8 'Cormorant Garamond',serif;background:linear-gradient(180deg,var(--g),#c9a15b00);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;margin:40px 0 -2vw}
+.fl{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;color:var(--m);font-size:14px}.fl a:hover{color:var(--g)}.fl div{display:flex;gap:26px;flex-wrap:wrap}
+@media (max-width:820px){nav div a{display:none}.live{display:inline-flex}.ps{grid-template-columns:1fr;align-content:center;gap:0}.pg{width:46%;position:absolute;right:4vw;top:12vh;opacity:.35}.vg{grid-template-columns:1fr}.sc{display:none}.hh h1{font-size:19vw}}
+@media (prefers-reduced-motion:reduce){#art,.mq div,.rw{animation:none}.ln>span,.fade{animation:none!important;transform:none;opacity:1}}
+</style>
+</head>
+<body>
+<div id="pre"><div class="pw"><b>Aman Patel</b><span id="pc">000</span></div></div>
+<div id="bar"></div><div id="cur"></div><div id="ring"></div><canvas id="dust"></canvas>
+<nav><b>Aman Patel</b><div><a href="#menu">Menu</a><a href="#story">Story</a><a href="#match">Find your cup</a><a href="#visit">Visit</a><span class="live" id="lv"><i></i><span>Open now</span></span></div></nav>
+
+<section id="hero"><div class="hs">
+  <svg id="hc" viewBox="0 0 400 400" aria-hidden="true">
+    <defs><radialGradient id="sg" cx=".4" cy=".35"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#cdbb9c"/></radialGradient><radialGradient id="cf" cx=".45" cy=".4"><stop offset="0" stop-color="#b8743f"/><stop offset=".65" stop-color="#6a3416"/><stop offset="1" stop-color="#2e1409"/></radialGradient><filter id="bl"><feGaussianBlur stdDeviation="9"/></filter></defs>
+    <circle cx="200" cy="214" r="186" fill="#000" opacity=".55" filter="url(#bl)"/>
+    <circle cx="200" cy="200" r="190" fill="url(#sg)"/><circle cx="200" cy="200" r="150" fill="none" stroke="#b79f78" stroke-width="2" opacity=".6"/>
+    <rect x="318" y="182" width="74" height="36" rx="18" fill="url(#sg)"/>
+    <circle cx="200" cy="200" r="128" fill="#fffaf0"/><circle cx="200" cy="200" r="118" fill="#d8c6a6"/><circle cx="200" cy="200" r="108" fill="url(#cf)"/>
+    <g id="art" fill="#f6e6c8"><path d="M200 262C150 218 160 170 200 192C240 170 250 218 200 262Z" opacity=".95"/><path d="M200 236C165 208 172 178 200 194C228 178 235 208 200 236Z" fill="#6a3416" opacity=".55"/><path d="M200 214C180 198 184 184 200 194C216 184 220 198 200 214Z"/><path d="M200 266V146" stroke="#6a3416" stroke-width="3" opacity=".6"/><circle cx="200" cy="138" r="8"/></g>
+    <ellipse cx="160" cy="160" rx="50" ry="22" fill="#fff" opacity=".1" transform="rotate(-35 160 160)"/>
+  </svg>
+  <div class="badge fade"><b>★ 4.9</b>Voted best specialty café 2026</div>
+  <div class="hh"><h1><span class="ln" id="l1"><span style="--d:0">Coffee,</span></span><span class="ln r" id="l2"><span style="--d:1"><em>elevated.</em></span></span></h1></div>
+  <div class="hb fade"><p>Single-origin beans, hand-laminated patisserie and an unhurried room made for lingering.</p><a class="btn b1" href="#menu">Explore the menu</a> <a class="btn b2" href="#visit">Visit us</a></div>
+  <div class="sc fade">Scroll</div>
+</div></section>
+
+<div class="mq"><div><span>✦</span>Single-origin<span>✦</span>Small-batch roasted<span>✦</span>Hand-laminated patisserie<span>✦</span>Slow bar<span>✦</span>Single-origin<span>✦</span>Small-batch roasted<span>✦</span>Hand-laminated patisserie<span>✦</span>Slow bar</div></div>
+
+<section class="p" id="story">
+  <div class="eb" style="margin-bottom:34px">Our philosophy</div>
+  <h2 id="sh">We believe a great cup is <w class="g">craft</w>, patience and a little theatre. Every bean is traced, every roast is tuned by hand, every pour is made to be <w class="g">remembered.</w></h2>
+  <div class="st3"><div><b data-n="14">0</b><span>Partner farms</span></div><div><b data-n="72">0</b><span>Hour cold brew</span></div><div><b data-n="11">0</b><span>Years of craft</span></div></div>
+</section>
+
+<section id="proc"><div class="ps">
+  <div><div class="eb">From farm to cup</div><h2 style="font-size:clamp(40px,5.4vw,80px);line-height:1;margin-top:14px">Four steps to <em style="color:var(--g)">perfection</em></h2>
+    <div class="stp" id="stp">
+      <div><b>01</b><h3>Source</h3><p>Hand-picked lots from high-altitude farms, bought directly and paid fairly.</p></div>
+      <div><b>02</b><h3>Roast</h3><p>Small batches, profiled by eye, ear and nose to bring out sweetness.</p></div>
+      <div><b>03</b><h3>Extract</h3><p>Dialled in every morning to the gram, the second and the degree.</p></div>
+      <div><b>04</b><h3>Pour</h3><p>Finished at the bar with silky milk and a pour worth pausing for.</p></div>
+    </div></div>
+  <svg class="pg" viewBox="0 0 240 340" aria-hidden="true"><defs><clipPath id="gc"><path d="M40 40H200L184 300Q182 320 164 320H76Q58 320 56 300Z"/></clipPath><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9a066"/><stop offset=".5" stop-color="#7a4020"/><stop offset="1" stop-color="#2a1309"/></linearGradient></defs>
+    <g clip-path="url(#gc)"><rect id="lq" x="30" y="320" width="180" height="300" fill="url(#lg)"/><ellipse id="cr" cx="120" cy="320" rx="78" ry="7" fill="#f0cf9e"/></g>
+    <path d="M40 40H200L184 300Q182 320 164 320H76Q58 320 56 300Z" fill="#fff" fill-opacity=".05" stroke="#c9a15b" stroke-width="2.5"/>
+    <path d="M62 60L76 290" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".25"/>
+    <line id="sm" x1="120" y1="0" x2="120" y2="300" stroke="#e8b878" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 10"><animate attributeName="stroke-dashoffset" from="48" to="0" dur=".6s" repeatCount="indefinite"/></line>
+  </svg>
+</div></section>
+
+<section id="menu"><div class="ms"><div class="tr" id="tr">
+  <div class="ti"><div class="eb" style="color:#a0702a">The menu</div><h2 class="f">Crafted<br><em style="color:#a0702a">daily.</em></h2><p>Keep scrolling. A short, considered list, made fresh every morning. Prices in ₹.</p></div>
+  <div class="cd"><div class="art" style="--a:#d99a5f;--b:#5a2a12">☕</div><div class="tg"><i>Signature</i><i>Oat</i></div><h3>Signature Latte</h3><p>Double ristretto, steamed oat milk, burnt-honey caramel.</p><div class="pr">₹260</div></div>
+  <div class="cd"><div class="art" style="--a:#7fd6c4;--b:#0d4a55">🧊</div><div class="tg"><i>Iced</i><i>Vegan</i></div><h3>Citrus Cold Brew</h3><p>72-hour steep, orange zest, clear ice, tonic float.</p><div class="pr">₹280</div></div>
+  <div class="cd"><div class="art" style="--a:#8a5a3c;--b:#24120a">🍫</div><div class="tg"><i>Hot</i><i>Rich</i></div><h3>Noir Mocha</h3><p>70% single-origin chocolate, espresso, vanilla bean cream.</p><div class="pr">₹290</div></div>
+  <div class="cd"><div class="art" style="--a:#f0c46a;--b:#8a4a16">🥐</div><div class="tg"><i>Baked daily</i></div><h3>Butter Croissant</h3><p>Seventy-two layers, cultured French butter, shatteringly crisp.</p><div class="pr">₹180</div></div>
+  <div class="cd"><div class="art" style="--a:#e2956e;--b:#6a2a1a">🍰</div><div class="tg"><i>Dessert</i></div><h3>Basque Cheesecake</h3><p>Caramelised top, custard centre, salted espresso dust.</p><div class="pr">₹320</div></div>
+  <div class="cd"><div class="art" style="--a:#b6c97a;--b:#38501c">🍵</div><div class="tg"><i>Tea</i><i>Vegan</i></div><h3>Ceremonial Matcha</h3><p>Stone-ground Uji matcha whisked to order, oat or iced.</p><div class="pr">₹300</div></div>
+  <div style="min-width:5vw"></div>
+</div><div class="mp"><i id="mp"></i></div></div></section>
+
+<section class="p" id="match">
+  <div class="eb">Cup matcher</div>
+  <div class="qa" id="qa"></div>
+</section>
+
+<section id="rev"><div class="eb">Reviews</div><h2 class="f">Loved, <em style="color:var(--g)">pour after pour.</em></h2><div class="rw" id="r1"></div><div class="rw b" id="r2"></div></section>
+
+<section class="p" id="visit">
+  <div class="vg">
+    <div><div class="eb">Visit us</div><h2 class="f">Your seat <em style="color:var(--g)">is waiting.</em></h2>
+      <p style="color:var(--m);max-width:420px">Walk in any time. 12 Café Lane, City Light Road, Surat, Gujarat.<br>hello@amanpatel.cafe · +91 98765 43210</p>
+      <div class="hr" id="hr"><div><span>Monday – Friday</span><span>7:30 am – 10 pm</span></div><div><span>Saturday – Sunday</span><span>8 am – 11 pm</span></div></div>
+      <a class="btn b1" href="https://www.google.com/maps/search/?api=1&query=cafe+Surat" target="_blank" rel="noopener">Get directions</a></div>
+    <div class="map"><svg viewBox="0 0 720 560" role="img" aria-label="Stylised map with a pin at the café"><rect width="720" height="560" fill="#16100c"/><g fill="#1f1812"><rect x="30" y="30" width="150" height="130" rx="12"/><rect x="230" y="30" width="170" height="130" rx="12"/><rect x="450" y="30" width="240" height="130" rx="12"/><rect x="30" y="215" width="150" height="130" rx="12"/><rect x="450" y="215" width="100" height="130" rx="12"/><rect x="600" y="215" width="90" height="130" rx="12"/><rect x="30" y="400" width="370" height="130" rx="12"/><rect x="450" y="400" width="240" height="130" rx="12"/></g><rect x="230" y="215" width="170" height="130" rx="12" fill="#1d3b34"/><g fill="none" stroke="#2c2219" stroke-width="22" stroke-linecap="round"><path d="M0 188H720M0 372H720M205 0V560M425 0V560M575 0V560"/></g><g fill="none" stroke="#c9a15b" stroke-width="2" opacity=".5" stroke-dasharray="8 10"><path d="M0 188H425V372"/></g><circle cx="425" cy="280" r="50" fill="#c9a15b" opacity=".2"><animate attributeName="r" values="26;74;26" dur="2.8s" repeatCount="indefinite"/></circle><path d="M425 322c-34-38-34-58-34-66a34 34 0 0168 0c0 8 0 28-34 66z" fill="#c9a15b"/><circle cx="425" cy="256" r="12" fill="#16100c"/></svg></div>
+  </div>
+</section>
+
+<footer><div class="fl"><div><a href="#menu">Menu</a><a href="#story">Story</a><a href="#match">Cup matcher</a><a href="#visit">Visit</a></div><div><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">WhatsApp</a></div></div><div class="fb">Aman Patel</div><div class="fl" style="border-top:1px solid #efe4cf18;padding-top:22px;margin-top:6vw"><span>© 2026 Aman Patel Coffee &amp; Patisserie</span><a href="#hero">Back to top ↑</a></div></footer>
+
+<script>
+(function(){
+var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
+var cl=function(v){return Math.max(0,Math.min(1,v))},RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var vh=innerHeight,vw=innerWidth,ly=0,mx=0,my=0,cx=0,cy=0,rx=0,ry=0;
+// preloader
+var n=0,pc=$('#pc'),iv=setInterval(function(){n=Math.min(100,n+(RM?100:3+Math.random()*5));pc.textContent=('00'+Math.floor(n)).slice(-3);if(n>=100){clearInterval(iv);$('#pre').classList.add('go');setTimeout(function(){document.body.classList.add('ready')},500)}},40);
+// story words
+var sh=$('#sh');(function(){var out='';sh.childNodes.forEach(function(nd){if(nd.nodeType===3){nd.textContent.split(/(\s+)/).forEach(function(t){out+=/\S/.test(t)?'<w>'+t+'</w>':t})}else out+=nd.outerHTML});sh.innerHTML=out})();
+var ws=$$('#sh w');
+// live status + hours
+var tx=new Date(),d=tx.getDay(),hr=tx.getHours()+tx.getMinutes()/60,wk=d>0&&d<6,op=wk?7.5:8,cs=wk?22:23,isO=hr>=op&&hr<cs;
+$('#lv').classList.toggle('x',!isO);$('#lv span').textContent=isO?'Open now · till '+(cs-12)+' pm':'Closed · opens '+(wk?'7:30':'8')+' am';
+$$('#hr div')[wk?0:1].classList.add('t');
+// matcher
+var Q=[{q:'What’s your mood today?',o:['Energised','Cosy','Refreshed','Indulgent']},{q:'Hot or iced?',o:['Hot','Iced']}];
+var R={Energised:{Hot:['Double Ristretto','Intense, syrupy and built to wake you up.'],Iced:['Citrus Cold Brew','Bright, clean and slow-steeped for 72 hours.']},Cosy:{Hot:['Signature Latte','Silky oat milk and burnt-honey caramel.'],Iced:['Vanilla Oat Iced Latte','Soft, creamy and gently sweet.']},Refreshed:{Hot:['Ceremonial Matcha','Whisked to order, grassy and calm.'],Iced:['Espresso Tonic','Crisp, citrusy and sparkling.']},Indulgent:{Hot:['Noir Mocha','Dark chocolate, espresso and vanilla cream.'],Iced:['Salted Caramel Cold Foam','Cold brew under a salted caramel cloud.']}};
+var qa=$('#qa'),ans=[];
+function qs(i){qa.innerHTML='<h3 class="f">'+Q[i].q+'</h3><div class="opts">'+Q[i].o.map(function(o){return '<button>'+o+'</button>'}).join('')+'</div>';$$('#qa button').forEach(function(b){b.onclick=function(){ans[i]=b.textContent;i<Q.length-1?qs(i+1):done()}})}
+function done(){var r=R[ans[0]][ans[1]];qa.innerHTML='<div class="res"><div class="eb" style="margin-bottom:14px">Your perfect cup</div><h3 class="f">'+r[0]+'</h3><p>'+r[1]+'</p><div class="opts"><button id="rs">Try again</button></div></div>';$('#rs').onclick=function(){qs(0)}}
+qs(0);
+// reviews
+var RV=[['Aanya S.','The best latte in town, and the room feels like a quiet film set.'],['Rohan P.','That croissant is genuinely life-changing. Instant regular.'],['Meera D.','Calm, beautiful and kind baristas. I work here every Saturday.'],['Kabir J.','Cold brew this smooth should be illegal. Worth the trip.'],['Isha T.','Hands down the most elegant café in the city.']];
+function row(id){var h='';RV.concat(RV).forEach(function(r){h+='<div class="rc"><div class="s">★★★★★</div><p>“'+r[1]+'”</p><small>'+r[0]+'</small></div>'});$(id).innerHTML=h}row('#r1');row('#r2');
+// metrics
+var hero=$('#hero'),hc=$('#hc'),l1=$('#l1'),l2=$('#l2'),proc=$('#proc'),menu=$('#menu'),tr=$('#tr'),stp=$$('#stp div'),lq=$('#lq'),cr=$('#cr'),sm=$('#sm'),mp=$('#mp'),bar=$('#bar'),story=$('#story');
+function meas(){vh=innerHeight;vw=innerWidth;menu.style.height=(tr.scrollWidth-vw+vh)+'px';cv.width=vw;cv.height=vh}
+// dust
+var cv=$('#dust'),c2=cv.getContext('2d'),P=[];for(var i=0;i<48;i++)P.push({x:Math.random(),y:Math.random(),r:.6+Math.random()*1.8,s:.0002+Math.random()*.0006,a:.15+Math.random()*.45});
+meas();addEventListener('resize',meas);addEventListener('load',meas);
+addEventListener('scroll',function(){},{passive:true});
+addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY},{passive:true});
+document.addEventListener('mouseover',function(e){$('#ring').classList.toggle('h',!!e.target.closest('a,button,.cd'))});
+$$('.btn').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+(e.clientX-r.left-r.width/2)*.25+'px,'+(e.clientY-r.top-r.height/2)*.35+'px)'});b.addEventListener('mouseleave',function(){b.style.transform=''})});
+var cnt=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=0,m=+e.target.dataset.n;(function s(){t+=Math.max(.3,m/60);if(t>=m){e.target.textContent=m;return}e.target.textContent=Math.floor(t);requestAnimationFrame(s)})();cnt.unobserve(e.target)}})},{threshold:.6});$$('[data-n]').forEach(function(e){cnt.observe(e)});
+function pr(el,extra){return cl((ly-el.offsetTop)/(el.offsetHeight-vh))}
+function frame(){
+  var sy=scrollY;ly+=(sy-ly)*(RM?1:.12);
+  var h=document.documentElement.scrollHeight-vh;bar.style.transform='scaleX('+(h>0?sy/h:0)+')';
+  // hero
+  var p=cl(ly/(vh*.95)),px=(mx/vw-.5)*2||0,py=(my/vh-.5)*2||0;
+  hc.style.transform='translate('+px*-16+'px,'+py*-12+'px) scale('+(1+p*1.9)+') rotate('+p*34+'deg)';hc.style.opacity=1-p*.92;
+  l1.style.transform='translateX('+(-p*26)+'vw)';l2.style.transform='translateX('+(p*26)+'vw)';
+  // story words
+  var sr=story.offsetTop,sp=cl((ly+vh*.75-sr-vh*.15)/(vh*.75)),k=sp*ws.length*1.1;ws.forEach(function(w,i){w.classList.toggle('on',i<k)});
+  // process
+  var q=pr(proc);var a=Math.min(3,Math.floor(q*4));stp.forEach(function(s,i){s.classList.toggle('on',i===a)});
+  var lv=cl(q*1.15),y=320-lv*272;lq.setAttribute('y',y);cr.setAttribute('cy',y);sm.setAttribute('y2',y);sm.style.opacity=lv<.98?1:0;
+  // menu
+  var m=pr(menu);tr.style.transform='translateX('+(-m*(tr.scrollWidth-vw))+'px)';mp.style.transform='scaleX('+m+')';
+  // dust
+  c2.clearRect(0,0,vw,vh);c2.fillStyle='#c9a15b';P.forEach(function(o){o.y-=o.s*(1+Math.abs(ly-sy)*.05);if(o.y<-.02)o.y=1.02;c2.globalAlpha=o.a;c2.beginPath();c2.arc(o.x*vw+Math.sin(o.y*8+o.x*20)*14,o.y*vh,o.r,0,6.283);c2.fill()});
+  // cursor
+  cx+=(mx-cx)*.9;cy+=(my-cy)*.9;rx+=(mx-rx)*.15;ry+=(my-ry)*.15;
+  $('#cur').style.transform='translate('+cx+'px,'+cy+'px)';$('#ring').style.transform='translate('+rx+'px,'+ry+'px)';
+  requestAnimationFrame(frame)}
+frame();
+})();
+</script>
+</body>
+</html>
