@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aman Patel — QR Table Ordering</title>
+  <meta name="description" content="Direct contactless table ordering for Aman Patel Coffee & Patisserie">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/css/customer.css">
+</head>
+<body>
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-notice">
+    <span id="toastIcon">✨</span>
+    <span id="toastMsg">Notification message</span>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand-wrap">
+        <div class="brand-icon">☕</div>
+        <div>
+          <div class="brand-title">Aman Patel</div>
+          <div class="brand-sub">Table Ordering</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btnTableSelect" class="table-pill" title="Click to change table">
+          <span class="status-dot"></span>
+          <span id="tableLabel">Table 1</span>
+        </button>
+        <button id="btnCallStaff" class="btn-waiter" title="Call staff or request bill">
+          <span>🛎️</span>
+          <span>Staff</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-compact">
+    <div class="hero-box">
+      <div class="hero-text">
+        <h1>Crafted with <em>devotion.</em></h1>
+        <p>Order freshly roasted single-origin coffees, artisanal pastries and seasonal plates directly to your table.</p>
+      </div>
+      <div class="hero-badge">
+        <span class="tag">★ 4.9 Specialty Cafe</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <div class="search-wrapper">
+    <div class="search-input-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search for latte, matcha, croissant, etc...">
+    </div>
+  </div>
+
+  <!-- Category Nav -->
+  <div class="category-nav-wrapper">
+    <div class="category-nav" id="categoryNav">
+      <button class="cat-btn active" data-cat="all">✦ All Items</button>
+    </div>
+  </div>
+
+  <!-- Menu Section -->
+  <main class="menu-section" id="menuContainer">
+    <!-- Menu items injected dynamically via JS -->
+  </main>
+
+  <!-- Bottom Floating Action Bar -->
+  <div class="bottom-bar" id="bottomBar" style="display: none;">
+    <div class="bottom-bar-inner">
+      <button id="btnOpenCart" class="btn-cart-bar">
+        <span id="cartCountLabel">0 items</span>
+        <span>View Order</span>
+        <span id="cartTotalLabel">₹0</span>
+      </button>
+      <button id="btnActiveTracker" class="btn-track-pill" style="display: none;">
+        <span>⏳</span>
+        <span>Track Order</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Table Switcher Modal -->
+  <div id="modalTable" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3>Select Your Table</h3>
+        <button class="btn-close" onclick="closeModal('modalTable')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 16px;">
+          Choose the table number displayed on your physical QR stand:
+        </p>
+        <div id="tableListGrid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customizer Modal -->
+  <div id="modalCustomizer" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3 id="custItemName">Customise Item</h3>
+        <button class="btn-close" onclick="closeModal('modalCustomizer')">&times;</button>
+      </div>
+      <div class="modal-body" id="custBody">
+        <!-- Injected via JS -->
+      </div>
+      <div class="modal-footer">
+        <div class="quantity-control">
+          <button class="btn-qty" id="custQtyMinus">−</button>
+          <span class="qty-display" id="custQtyDisplay">1</span>
+          <button class="btn-qty" id="custQtyPlus">+</button>
+        </div>
+        <button id="btnConfirmAddToCart" class="btn-primary">
+          Add to Cart — <span id="custLineTotal">₹0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart & Checkout Modal -->
+  <div id="modalCart" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3>Your Order</h3>
+        <button class="btn-close" onclick="closeModal('modalCart')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="cartItemsList">
+          <!-- Cart items list -->
+        </div>
+
+        <div id="checkoutFormArea" style="margin-top: 20px;">
+          <div class="form-group">
+            <label for="custNameInput">Your Name</label>
+            <input type="text" id="custNameInput" class="form-input" placeholder="e.g. Aman / Meera">
+          </div>
+          <div class="form-group">
+            <label for="orderNotesInput">Kitchen Instructions (Optional)</label>
+            <input type="text" id="orderNotesInput" class="form-input" placeholder="e.g. Extra hot, oat milk on side">
+          </div>
+          <div class="form-group">
+            <label>Payment Method</label>
+            <div class="payment-options">
+              <div class="pay-btn-opt active" data-method="counter">Pay at Counter</div>
+              <div class="pay-btn-opt" data-method="upi">UPI / QR Pay</div>
+              <div class="pay-btn-opt" data-method="card">Card / NFC</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bill-breakdown" id="cartBillSummary">
+          <div class="bill-row"><span>Subtotal</span><span id="billSubtotal">₹0</span></div>
+          <div class="bill-row"><span>GST (5%)</span><span id="billTax">₹0</span></div>
+          <div class="bill-row total-row"><span>Total Payable</span><span id="billTotal">₹0</span></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnPlaceOrder" class="btn-primary">Send Order to Kitchen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Order Tracker Modal -->
+  <div id="modalTracker" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3 id="trackerOrderNumber">Order #1001</h3>
+        <button class="btn-close" onclick="closeModal('modalTracker')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="tracker-status-box">
+          <div class="tracker-icon" id="trackerIcon">☕</div>
+          <div class="tracker-title" id="trackerStatusTitle">Order Received</div>
+          <div class="tracker-sub" id="trackerStatusDesc">The barista has received your ticket and is preparing your order.</div>
+        </div>
+
+        <div class="tracker-stepper">
+          <div class="tracker-progress-bar" id="trackerProgressBar" style="width: 15%;"></div>
+          <div class="step-node" id="step-pending">
+            <div class="step-circle">1</div>
+            <div class="step-label">Received</div>
+          </div>
+          <div class="step-node" id="step-preparing">
+            <div class="step-circle">2</div>
+            <div class="step-label">Preparing</div>
+          </div>
+          <div class="step-node" id="step-ready">
+            <div class="step-circle">3</div>
+            <div class="step-label">Ready</div>
+          </div>
+          <div class="step-node" id="step-served">
+            <div class="step-circle">4</div>
+            <div class="step-label">Served</div>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-primary); border-radius: 12px; padding: 14px; margin-top: 16px; border: 1px solid var(--border);">
+          <div style="font-size: 12px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">Order Summary</div>
+          <div id="trackerItemsList" style="font-size: 13.5px;"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" onclick="closeModal('modalTracker')">Back to Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Staff Assistance Modal -->
+  <div id="modalStaff" class="modal-overlay">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <h3>Call Server / Staff</h3>
+        <button class="btn-close" onclick="closeModal('modalStaff')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--text-muted); font-size: 13.5px; margin-bottom: 14px;">
+          Need assistance or ready for your bill? Tap an option below to notify the floor team:
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <button class="btn-primary" style="background: var(--bg-elevated); color: var(--text-main); border: 1px solid var(--border);" onclick="triggerStaffCall('Assistance needed at table')">
+            🙋 Table Assistance Needed
+          </button>
+          <button class="btn-primary" style="background: var(--bg-elevated); color: var(--text-main); border: 1px solid var(--border);" onclick="triggerStaffCall('Water refilled requested')">
+            💧 Water Refill Requested
+          </button>
+          <button class="btn-primary" style="background: var(--bg-elevated); color: var(--text-main); border: 1px solid var(--border);" onclick="triggerStaffCall('Requesting Bill / Check')">
+            💳 Request Printed Bill
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/customer.js"></script>
+</body>
+</html>
