@@ -1,0 +1,302 @@
+{
+  "tables": [
+    {
+      "id": 1,
+      "name": "Table 1 - Patio Sun"
+    },
+    {
+      "id": 2,
+      "name": "Table 2 - Window Lounge"
+    },
+    {
+      "id": 3,
+      "name": "Table 3 - Espresso Bar"
+    },
+    {
+      "id": 4,
+      "name": "Table 4 - Cozy Nook"
+    },
+    {
+      "id": 5,
+      "name": "Table 5 - Garden View"
+    },
+    {
+      "id": 6,
+      "name": "Table 6 - Library Corner"
+    },
+    {
+      "id": 7,
+      "name": "Table 7 - Velvet Booth"
+    },
+    {
+      "id": 8,
+      "name": "Table 8 - Center High-Top"
+    }
+  ],
+  "categories": [
+    {
+      "id": "coffee",
+      "name": "Artisan Coffee",
+      "icon": "☕"
+    },
+    {
+      "id": "cold_brew",
+      "name": "Cold Brew & Iced",
+      "icon": "🧊"
+    },
+    {
+      "id": "tea",
+      "name": "Ceremonial & Teas",
+      "icon": "🍵"
+    },
+    {
+      "id": "bakery",
+      "name": "Fresh Patisserie",
+      "icon": "🥐"
+    },
+    {
+      "id": "desserts",
+      "name": "Artisan Desserts",
+      "icon": "🍰"
+    },
+    {
+      "id": "savory",
+      "name": "Gourmet Toast & Savory",
+      "icon": "🥪"
+    }
+  ],
+  "menu": [
+    {
+      "id": "latte-sig",
+      "categoryId": "coffee",
+      "name": "Signature Burnt Honey Latte",
+      "description": "Double ristretto, steamed oat milk, handcrafted burnt honey caramel.",
+      "price": 260,
+      "badge": "Popular",
+      "image": "☕",
+      "customizations": [
+        {
+          "id": "milk",
+          "name": "Milk Choice",
+          "required": true,
+          "options": [
+            {
+              "name": "Oat Milk (Default)",
+              "price": 0
+            },
+            {
+              "name": "Almond Milk",
+              "price": 20
+            },
+            {
+              "name": "Whole Milk",
+              "price": 0
+            }
+          ]
+        },
+        {
+          "id": "sweetness",
+          "name": "Sweetness Level",
+          "required": false,
+          "options": [
+            {
+              "name": "Standard (100%)",
+              "price": 0
+            },
+            {
+              "name": "Less Sweet (50%)",
+              "price": 0
+            },
+            {
+              "name": "Sugar Free",
+              "price": 0
+            }
+          ]
+        },
+        {
+          "id": "extra",
+          "name": "Extras",
+          "required": false,
+          "options": [
+            {
+              "name": "Extra Ristretto Shot",
+              "price": 40
+            },
+            {
+              "name": "Vanilla Bean Cream",
+              "price": 30
+            }
+          ]
+        }
+      ],
+      "inStock": true
+    },
+    {
+      "id": "cold-brew-citrus",
+      "categoryId": "cold_brew",
+      "name": "Citrus Tonic Cold Brew",
+      "description": "72-hour single-origin steep, orange peel, artisan tonic float & crystal ice.",
+      "price": 280,
+      "badge": "Refreshing",
+      "image": "🧊",
+      "customizations": [
+        {
+          "id": "ice",
+          "name": "Ice Level",
+          "required": false,
+          "options": [
+            {
+              "name": "Clear Cube Ice",
+              "price": 0
+            },
+            {
+              "name": "Light Ice",
+              "price": 0
+            }
+          ]
+        }
+      ],
+      "inStock": true
+    },
+    {
+      "id": "mocha-noir",
+      "categoryId": "coffee",
+      "name": "Noir Single-Origin Mocha",
+      "description": "70% Ecuadorian dark chocolate melted into espresso, topped with whipped cream.",
+      "price": 290,
+      "badge": "Rich",
+      "image": "🍫",
+      "customizations": [
+        {
+          "id": "milk",
+          "name": "Milk Choice",
+          "required": true,
+          "options": [
+            {
+              "name": "Whole Milk",
+              "price": 0
+            },
+            {
+              "name": "Oat Milk",
+              "price": 20
+            },
+            {
+              "name": "Almond Milk",
+              "price": 20
+            }
+          ]
+        }
+      ],
+      "inStock": true
+    },
+    {
+      "id": "croissant-butter",
+      "categoryId": "bakery",
+      "name": "Artisan Laminated Croissant",
+      "description": "Seventy-two delicate layers made with cultured French Normandy butter.",
+      "price": 180,
+      "badge": "Freshly Baked",
+      "image": "🥐",
+      "customizations": [
+        {
+          "id": "warmth",
+          "name": "Preparation",
+          "required": false,
+          "options": [
+            {
+              "name": "Warmed gently",
+              "price": 0
+            },
+            {
+              "name": "Room Temperature",
+              "price": 0
+            }
+          ]
+        }
+      ],
+      "inStock": true
+    },
+    {
+      "id": "cheesecake-basque",
+      "categoryId": "desserts",
+      "name": "Burnt Basque Cheesecake",
+      "description": "Caramelised dark crust with silky custard center and espresso salt crystals.",
+      "price": 320,
+      "badge": "Chef Special",
+      "image": "🍰",
+      "customizations": [],
+      "inStock": true
+    },
+    {
+      "id": "matcha-ceremonial",
+      "categoryId": "tea",
+      "name": "Ceremonial Uji Matcha Latte",
+      "description": "First-harvest stone-ground Uji matcha, whisked to velvet foam with creamy oat milk.",
+      "price": 300,
+      "badge": "Organic",
+      "image": "🍵",
+      "customizations": [
+        {
+          "id": "temp",
+          "name": "Served",
+          "required": true,
+          "options": [
+            {
+              "name": "Hot Steamed",
+              "price": 0
+            },
+            {
+              "name": "Over Ice",
+              "price": 0
+            }
+          ]
+        },
+        {
+          "id": "sweetness",
+          "name": "Sweetness",
+          "required": false,
+          "options": [
+            {
+              "name": "Unsweetened",
+              "price": 0
+            },
+            {
+              "name": "Subtle Honey",
+              "price": 0
+            }
+          ]
+        }
+      ],
+      "inStock": true
+    },
+    {
+      "id": "avocado-sourdough",
+      "categoryId": "savory",
+      "name": "Truffle Avocado Sourdough",
+      "description": "Toasted country sourdough, smashed Hass avocado, dukkah spice, microgreens & white truffle oil.",
+      "price": 340,
+      "badge": "Savory",
+      "image": "🥑",
+      "customizations": [
+        {
+          "id": "egg",
+          "name": "Add-on",
+          "required": false,
+          "options": [
+            {
+              "name": "Poached Organic Egg",
+              "price": 50
+            },
+            {
+              "name": "No Extra",
+              "price": 0
+            }
+          ]
+        }
+      ],
+      "inStock": true
+    }
+  ],
+  "orders": [],
+  "waiterCalls": []
+}
