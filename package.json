@@ -1,0 +1,20 @@
+{
+  "name": "qr-cafe-ordering-system",
+  "version": "1.0.0",
+  "description": "Full-stack QR Code Cafe Ordering System with real-time Kitchen Display System (KDS)",
+  "main": "server/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node --test tests/api.test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "qrcode": "^1.5.4",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

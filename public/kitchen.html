@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kitchen Display System (KDS) — Aman Patel</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/css/kitchen.css">
+</head>
+<body>
+  <!-- Header Bar -->
+  <header class="kds-header">
+    <div class="kds-brand">
+      <span class="kds-badge">Live KDS</span>
+      <h1>Kitchen & Bar Display</h1>
+      <span class="live-pulse" title="Real-time WebSocket connection active"></span>
+    </div>
+    <div class="kds-controls">
+      <div class="kds-stat-pill">
+        <span>Active Orders:</span>
+        <strong id="statActive">0</strong>
+      </div>
+      <div class="kds-stat-pill">
+        <span>Avg Time:</span>
+        <strong id="statAvgTime">4m</strong>
+      </div>
+      <button class="btn-kds-header" id="btnOpenStockManager">
+        <span>📦</span>
+        <span>Stock (86 Items)</span>
+      </button>
+      <button class="btn-kds-header" id="btnOpenQrManager">
+        <span>📱</span>
+        <span>Table QRs</span>
+      </button>
+      <button class="btn-kds-header" id="btnToggleSound">
+        <span id="soundIcon">🔔</span>
+        <span id="soundText">Sound ON</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Waiter Call Alert Bar -->
+  <div id="waiterBar" class="waiter-alerts-bar">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span>🚨</span>
+      <span id="waiterBarText">Table 3 has requested assistance: "Assistance needed"</span>
+    </div>
+    <button id="btnDismissWaiter" style="background: rgba(255,255,255,0.2); border: none; color: #fff; padding: 4px 10px; border-radius: 4px; cursor: pointer;">
+      Acknowledge
+    </button>
+  </div>
+
+  <!-- Filter Tabs -->
+  <div class="kds-tabs">
+    <button class="tab-btn active" data-filter="active">Active Tickets (<span id="countActive">0</span>)</button>
+    <button class="tab-btn" data-filter="pending">New / Pending (<span id="countPending">0</span>)</button>
+    <button class="tab-btn" data-filter="preparing">Preparing (<span id="countPreparing">0</span>)</button>
+    <button class="tab-btn" data-filter="ready">Ready for Service (<span id="countReady">0</span>)</button>
+    <button class="tab-btn" data-filter="served">Completed / History</button>
+  </div>
+
+  <!-- Main Kanban Board -->
+  <main class="kds-main">
+    <div class="ticket-board" id="ticketBoard">
+      <!-- Tickets injected dynamically -->
+    </div>
+  </main>
+
+  <!-- Table QR Manager Modal -->
+  <div id="modalQrManager" class="kds-modal-overlay">
+    <div class="kds-modal-box">
+      <div class="kds-modal-header">
+        <h3 style="font-family: var(--font-serif); font-size: 24px; color: #fff;">Table QR Code Stands</h3>
+        <button onclick="closeKdsModal('modalQrManager')" style="background:none; border:none; color: var(--kds-text-dim); font-size: 24px; cursor:pointer;">&times;</button>
+      </div>
+      <div class="kds-modal-body">
+        <p style="color: var(--kds-text-dim); font-size: 13.5px; margin-bottom: 20px;">
+          Each QR code below links customers directly to the mobile ordering menu with their table pre-assigned:
+        </p>
+        <div class="qr-cards-grid" id="qrCardsContainer">
+          <!-- QR cards loaded via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stock (86) Management Modal -->
+  <div id="modalStockManager" class="kds-modal-overlay">
+    <div class="kds-modal-box">
+      <div class="kds-modal-header">
+        <h3 style="font-family: var(--font-serif); font-size: 24px; color: #fff;">Item Availability & 86 Manager</h3>
+        <button onclick="closeKdsModal('modalStockManager')" style="background:none; border:none; color: var(--kds-text-dim); font-size: 24px; cursor:pointer;">&times;</button>
+      </div>
+      <div class="kds-modal-body">
+        <div id="stockListContainer" style="display: flex; flex-direction: column; gap: 10px;">
+          <!-- Menu items stock toggles loaded via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/kitchen.js"></script>
+</body>
+</html>
